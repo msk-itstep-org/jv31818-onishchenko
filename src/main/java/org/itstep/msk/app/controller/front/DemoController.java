@@ -1,4 +1,4 @@
-package org.itstep.msk.app.controller;
+package org.itstep.msk.app.controller.front;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

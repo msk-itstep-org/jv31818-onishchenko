@@ -1,0 +1,100 @@
+/*BODY AND TAGS*/
+body {
+    background-color: black;
+    background-image: url('/images/beye.png');
+    background-repeat: no-repeat;
+}
+table {
+    border-collapse: collapse;
+    width: 800px;
+    border: 1px solid grey;
+    margin: auto;
+}
+TR.head {
+        text-align: center;
+        background: grey;
+        }
+        TD {
+        text-align:center;
+        }
+
+        .content{
+margin: 0, auto;
+width: 100%;
+	height: 200px;
+	text-align: center;
+        }
+        .warns{
+            filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); /* IE 5.5+*/
+             -moz-opacity: 0.5; /- Mozi11a 1.6 m amme */
+             -khtml-opacity: 0.5; /* Konqueror 3.1, Safari 1.1 */
+             opacity: 0.5; /* C553 - Mozilla 1.7b +, Firefox 0.9 +, Safari 1.2+, Opera 9+ */
+        margin-top: 50px;
+        width: 100%;
+        	height: 200px;
+        	border: 1px solid #000;
+        	position: absolute;
+        	margin: 0, auto;
+        	background: rgba(111, 155, 45, 0.2);
+        	background: grey;
+
+        }
+
+/*SLIDERS */
+
+        /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+        input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

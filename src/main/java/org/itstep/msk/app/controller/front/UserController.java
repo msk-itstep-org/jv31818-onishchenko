@@ -3,6 +3,8 @@ package org.itstep.msk.app.controller.front;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
+
 @Controller
 public class UserController {
 
@@ -16,9 +18,15 @@ public class UserController {
 
         return "info";
     }
-    @RequestMapping("/login")
-    public String login(){
+    @RequestMapping("/admin")
+    public String admin(){
 
+        return "admin";
+    }
+    @RequestMapping("/login")
+    public String login( Map<String, Object> model){
+        model.put("username","username");
+        model.put("password","password");
         return "login";
     }
     @RequestMapping("/logout")

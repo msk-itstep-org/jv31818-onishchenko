@@ -32,20 +32,35 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/info").permitAll()
-                .antMatchers("/resources/**").permitAll()
-                .antMatchers("/images/**").permitAll()
-                .antMatchers("/CSS/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/").permitAll()
+//                .antMatchers("/info").permitAll()
+//                .antMatchers("/resources/**").permitAll()
+//                .antMatchers("/images/**").permitAll()
+//                .antMatchers("/CSS/**").permitAll()
+//                .antMatchers("/admin/*").hasRole("admin")
+//                .antMatchers("/demo/*").authenticated()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login").usernameParameter("user").usernameParameter("password")
+//                .defaultSuccessUrl("/demo").failureUrl("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
+        http.authorizeRequests().antMatchers("/","info","resoursec/**","/images/**","login").permitAll();
+        http.authorizeRequests().antMatchers("admin").access("hasRole('admin')");
+        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+        http.authorizeRequests().and().formLogin()//
+                // Submit URL of login page.
+                .loginPage("/login")//
+                .defaultSuccessUrl("/demo")//
+                .failureUrl("/login?error=true")//
+                .usernameParameter("username")//
+                .passwordParameter("password")
+                // Config for Logout Page
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
     }
 }

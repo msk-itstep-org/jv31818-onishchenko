@@ -1,27 +1,33 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Login wiy</title>
 </head>
 <body style="background-color:black; background-image: url('/images/beye.png'); background-repeat: no-repeat;">
-<div align="center">
-
-    <form action="/login" METHOD="POST">
-        <table align="center">
-            <tr>
-                <td><p align="center"><font color="white"> Login form</font></p></td>
-            </tr>
-            <tr><td><p></p></td></tr>
-            <tr><td><input type="text" placeholder="login" name="username"/> </td></tr>
-            <tr><td><p></p></td></tr>
-            <tr><td><input type="password" placeholder="password" name="password"/> </td></tr>
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-            <tr><td><p></p></td></tr>
-            <tr><td><p align="center"><input type="submit" value="Login"/></p> </td></tr>
-
-        </table>
-    </form>
-
+<div th:if="${param.error}">
+    Invalid username and password.
 </div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+    <table align="center">
+        <tr>
+            <td><p align="center"><font color="white"> Login form</font></p></td>
+        </tr>
+        <tr><td><p></p></td></tr>
+        <tr><td><input type="text" placeholder="login" name="username"/> </td></tr>
+        <tr><td><p></p></td></tr>
+        <tr><td><input type="password" placeholder="password" name="password"/> </td></tr>
+<!--        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>-->
+        <tr><td><p></p></td></tr>
+        <tr><td><p align="center"><input type="submit" value="Login"/></p> </td></tr>
+
+    </table>
+
+</form>
+
+
+
 </body>
 </html>

@@ -7,7 +7,7 @@ CREATE table users (
     );
 Create table user_roles (
     id int(20) not null auto_increment primary key,
-    login varchar(255) NOT NULL references users(login),
+    user_id int(50) NOT NULL references users(id),
     name_role varchar(45) NOT NULL
 );
 --insert into users (login,password,name) values ('admin','admin','Admin');

@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Info Page</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 
 </head>
-<body style="background-color:black; background-image: url('/images/beye.png'); background-repeat: no-repeat;">
+<body style="background-color:black; background-image: url('/images/beye.png'); background-repeat: no-repeat;"><font color="white">
 There is some info at page about service e,.t.c
 <a href="/login.html">Sign in</a>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</font>
 </body>
 </html>

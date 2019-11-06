@@ -9,8 +9,10 @@ public class userRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "login")
-    private String login;
+    //@Column(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id",referencedColumnName="id", nullable = false)
+    private User user;
 
     @Column(name = "nameRole")
     private String nameRole;
@@ -23,12 +25,12 @@ public class userRole {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public User getLogin() {
+        return user;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setLogin(User user) {
+        this.user = user;
     }
 
     public String getNameRole() {

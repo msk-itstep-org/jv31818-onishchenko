@@ -1,6 +1,8 @@
 package org.itstep.msk.app.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -22,6 +24,10 @@ public class User {
 
     @Column(name = "enabled")
     private Boolean enabledd;
+
+
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = org.itstep.msk.app.entity.userRole.class,mappedBy = "user")
+    private Set<userRole> userRole = new HashSet<userRole>(0);
 
     public Boolean getEnabledd() {
         return enabledd;
@@ -63,4 +69,13 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public Set<org.itstep.msk.app.entity.userRole> getUserRole() {
+        return userRole;
+    }
+
+//    public void setUserRole(Set<org.itstep.msk.app.entity.userRole> userRole) {
+//        this.userRole = userRole;
+//    }
 }

@@ -1,81 +1,113 @@
 package org.itstep.msk.app.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements UserDetails, Serializable {
+
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@OneToMany
     private Integer id;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
     @Column(name = "enabled")
     private Boolean enabledd;
 
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = UserRole.class,mappedBy = "user")
+    private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
-    @OneToMany(fetch = FetchType.LAZY,targetEntity = org.itstep.msk.app.entity.userRole.class,mappedBy = "user")
-    private Set<userRole> userRole = new HashSet<userRole>(0);
+
+    protected User() {
+    }
+
 
     public Boolean getEnabledd() {
         return enabledd;
     }
-
     public void setEnabledd(Boolean enabledd) {
         this.enabledd = enabledd;
     }
 
-
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+
+
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return getEnabledd();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String name) {
+        this.firstName = firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-
-    public Set<org.itstep.msk.app.entity.userRole> getUserRole() {
+    public Set<UserRole> getUserRole() {
         return userRole;
     }
-
-//    public void setUserRole(Set<org.itstep.msk.app.entity.userRole> userRole) {
-//        this.userRole = userRole;
-//    }
+    public void setUserRole(Set<UserRole> userRole) {
+        this.userRole = userRole;
+    }
 }

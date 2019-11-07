@@ -25,6 +25,11 @@ public class UserController {
 
         return "admin";
     }
+
+    @RequestMapping("/demo")
+    public String demo (){
+        return "demo";
+    }
     @RequestMapping("/login")
     public String login( Map<String, Object> model){
         model.put("username","username");

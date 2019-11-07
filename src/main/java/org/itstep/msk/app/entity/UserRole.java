@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="userRoles")
-public class userRole {
+public class UserRole {
     @Column(name = "id")@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,11 +25,10 @@ public class userRole {
         this.id = id;
     }
 
-    public User getLogin() {
+    public User getUserId() {
         return user;
     }
-
-    public void setLogin(User user) {
+    public void setUserId(User user) {
         this.user = user;
     }
 

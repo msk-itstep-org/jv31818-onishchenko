@@ -8,6 +8,6 @@ CREATE table users (
 Create table user_roles (
     id int(20) not null auto_increment primary key,
     user_id int(50) NOT NULL references users(id),
-    name_role varchar(45) NOT NULL
+    name_role varchar(45) NOT NULL references roles(name_role)
 );
 --insert into users (login,password,name) values ('admin','admin','Admin');

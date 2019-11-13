@@ -1,6 +1,5 @@
 package org.itstep.msk.app.controller.front;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,12 +17,6 @@ public class UserController {
     public String infoDef(){
 
         return "info";
-    }
-    @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping("/admin")
-    public String admin(){
-
-        return "admin";
     }
 
     @RequestMapping("/demo")

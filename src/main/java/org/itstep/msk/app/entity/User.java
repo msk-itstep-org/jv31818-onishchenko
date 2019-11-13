@@ -1,7 +1,9 @@
 package org.itstep.msk.app.entity;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,6 +22,7 @@ public class User implements UserDetails, Serializable {
     private Integer id;
 
     @Column(name = "username")
+    @UniqueElements
     private String username;
 
     @Column(name = "password")
@@ -35,7 +38,7 @@ public class User implements UserDetails, Serializable {
     private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
 
-    protected User() {
+    public User() {
     }
 
 

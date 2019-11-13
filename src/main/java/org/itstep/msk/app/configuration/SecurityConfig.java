@@ -15,21 +15,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private UserDetailServiceImpl userDetailService;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailService);
-//    }
-
     @Autowired
     private UserDetailsService userDetailsService;
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
@@ -39,7 +27,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/info").permitAll()//,"/resources/**","/CSS/**","/images/**"
+                .antMatchers("/", "/info","/admin/**","/resources/**","/CSS/**","/images/**").permitAll()//
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -49,20 +37,6 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
     }
-//TODO role dependency and at first password encoder.
+////TODO role dependency and at first password encoder.
 
-
-
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user = UserD
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("password")
-//                        .roles("USER","ADMIN")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
 }

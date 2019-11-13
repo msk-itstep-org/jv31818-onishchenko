@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
-<html xmlns="http://www.thymleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymleaf.org "/>
+<html lang="ru" xmlns="http://www.thymleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymleaf.org ">
 <head>
+    <link rel=”stylesheet” href=”/CSS/main.css” type=”text/css”>
     <meta charset="UTF-8">
     <title>Users</title>
 </head>
@@ -10,18 +10,45 @@
 <h1>User management</h1>
 <br/>
 <br/>
+
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td>Пользователь:</td>-->
+<!--        <td th:text=${user.firstName}></td>-->
+
+<!--        <td>Логин:</td>-->
+<!--        <td th:text=${user.username}></td>-->
+
+<!--        <td>Действия</td>-->
+<!--        <td> <a href="">Заблокировать</a>-->
+<!--            <a href="">Удалить</a>-->
+<!--            <a href="">Просмотреть контроллеры</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--</table>-->
+
 <table>
-    <tr>
-        <th>Пользователь:</th>
-        <th>th:text=${username}</th>
+    <tr th:each="lsr : ${list}">
+        <td>Пользователь:</td>
+        <td th:text=${lsr.firstName}></td>
 
-        <th>Логин:</th>
-        <th></th>
+        <td>Логин:</td>
+        <td th:text=${lsr.username}></td>
 
-        <th>Действия</th>
-        <th></th>
+        <td>Действия</td>
+        <td> <a href="">Заблокировать</a>
+            <a href="">Удалить</a>
+            <a href="">Просмотреть контроллеры</a>
+        </td>
     </tr>
 </table>
+<form action="" method="POST">
+    <p>Login<input type="text" name="username"/></p>
+    <p>First name<input type="text" name="first_name"/></p>
+    <p>Password<input type="text" name="password"/></p>
+    <p><input type="number" name="username" max="1" min="0"/></p>
+    <p><input type="submit" value="ADD USER"/></p>
+</form>
 
 </body>
 </html>

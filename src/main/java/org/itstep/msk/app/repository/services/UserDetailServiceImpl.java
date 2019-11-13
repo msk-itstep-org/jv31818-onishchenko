@@ -1,6 +1,7 @@
-package org.itstep.msk.app.repository;
+package org.itstep.msk.app.repository.services;
 
 import org.itstep.msk.app.entity.User;
+import org.itstep.msk.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

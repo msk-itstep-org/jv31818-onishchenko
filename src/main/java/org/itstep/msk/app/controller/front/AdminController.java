@@ -14,19 +14,19 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Map;
 
-@PreAuthorize("hasRole('ADMIN')")
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/admin/admin")
+    @GetMapping("/admin")
     public String admin(){
-        return "admin";
+        return "admin/admin";
     }
 
-    @GetMapping("/admin/users/{id}")
+    @GetMapping("/users/{id}")
     public ModelAndView users(@PathVariable Integer id){
         ModelAndView model = new ModelAndView("admin/users");
         if(id!=null&&id!=0) {
@@ -40,19 +40,19 @@ public class AdminController {
         }
         return model;
     }
-    @GetMapping("/admin/controllers")
+    @GetMapping("/controllers")
     public String controllers(){
         return "admin";
     }
-    @GetMapping("/admin/monitoring")
+    @GetMapping("/monitoring")
     public String monitoring(){
         return "admin";
     }
-    @GetMapping("/admin/settings")
+    @GetMapping("/settings")
     public String settings(){
         return "admin";
     }
-    @GetMapping("/admin/mailsend")
+    @GetMapping("/mailsend")
     public String mail(){
         return "admin";
     }

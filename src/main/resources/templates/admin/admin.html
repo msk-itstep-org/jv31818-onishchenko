@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <title>Admin panel</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/CSS/tabs.css">
+    <script src="/js/tabs.js"></script>
 </head>
-<body style="background-color:black; background-image: url('/images/beye.png'); background-repeat: no-repeat;">
+<body>
 <p>Admin pane.</p>
+<div id="tabs" class="c-tabs no-js">
+    <div class="c-tabs-nav">
+        <a href="#" class="c-tabs-nav__link is-active"></a>
+        <a href="#" class="c-tabs-nav__link"></a>
+        ...
+    </div>
+    <div class="c-tab is-active">
+        <div class="c-tab__content"></div>
+    </div>
+    <div class="c-tab">
+        <div class="c-tab__content"></div>
+    </div>
+    ...
+</div>
 
 </body>
 </html>

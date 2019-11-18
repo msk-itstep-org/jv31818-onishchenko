@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Info Page</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
 
 </head>
 <body style="background-color:black; background-image: url('/images/beye.png'); background-repeat: no-repeat;"><font color="white">
 There is some info at page about service e,.t.c
-<a href="/login.html">Sign in</a>
+    <a th:href="@{/login}">Sign in</a>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>

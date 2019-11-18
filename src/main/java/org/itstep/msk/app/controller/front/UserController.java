@@ -23,17 +23,6 @@ public class UserController {
     public String demo (){
         return "demo";
     }
-    @RequestMapping("/login")
-    public String login( Map<String, Object> model){
-        model.put("username","username");
-        model.put("password","password");
-        return "login";
-    }
-    @RequestMapping("/logout")
-    public String logout(
-//            @RequestParam(name="name") String name
-    ){
-//        sessionHandler.remove(name);
-        return "logout";
-    }
+
+
 }

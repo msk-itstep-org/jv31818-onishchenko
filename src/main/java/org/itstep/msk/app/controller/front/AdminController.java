@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -22,38 +20,52 @@ public class AdminController {
     UserRepository userRepository;
 
     @GetMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin/admin";
     }
 
-    @GetMapping("/users/{id}")
-    public ModelAndView users(@PathVariable Integer id){
-        ModelAndView model = new ModelAndView("admin/users");
-        if(id!=null&&id!=0) {
+    @GetMapping("/user/{id}")
+    public ModelAndView users(@PathVariable Integer id) {
+        ModelAndView model = new ModelAndView("admin/user");
             Map<String, Object> mod = model.getModel();
             User user = userRepository.findById(id).orElse(new User());
-            mod.put("user", user);;
-        }else {
-            Map<String, Object> mod = model.getModel();
-            List<User> list = userRepository.findAll();
-            mod.put("list",list);
-        }
+            mod.put("user", user);
         return model;
     }
+    @PostMapping("/users")
+    public String userAdd(@ModelAttribute User user) {
+        ModelAndView model = new ModelAndView("admin/user");
+        userRepository.save(user);
+        userRepository.flush();
+
+        return "redirect:/user/{"+user.getId()+"}";
+    }
+    @GetMapping("/users")
+    public ModelAndView usersAll() {
+        ModelAndView model = new ModelAndView("admin/users");
+        Map<String, Object> mod = model.getModel();
+        List<User> list = userRepository.findAll();
+        mod.put("list", list);
+        return model;
+    }
+
     @GetMapping("/controllers")
-    public String controllers(){
+    public String controllers() {
         return "admin";
     }
+
     @GetMapping("/monitoring")
-    public String monitoring(){
+    public String monitoring() {
         return "admin";
     }
+
     @GetMapping("/settings")
-    public String settings(){
+    public String settings() {
         return "admin";
     }
+
     @GetMapping("/mailsend")
-    public String mail(){
+    public String mail() {
         return "admin";
     }
 

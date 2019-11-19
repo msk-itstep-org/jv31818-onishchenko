@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginRegisterController {
 
-    @GetMapping
+    @GetMapping("error_403")
     public String error_403(){
         return "403";
     }
+
     @GetMapping("/login")
     public String getLogin(Model model) {
         model.addAttribute("user", new User());

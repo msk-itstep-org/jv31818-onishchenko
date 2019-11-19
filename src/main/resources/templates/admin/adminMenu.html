@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="adminMenu" class="adminMenu">
+<div  class="top_menu" id="top_menu">
+    <div class="item_menu" id="menu_item0">
+        <a th:href="@{/admin/users}">Users</a>
+    </div>
+    <div class="item_menu" id="menu_item1">
+        <a th:href="@{/admin/users}">Controllers</a>
+    </div>
+    <div class="item_menu" id="menu_item2">
+        <a th:href="@{/admin/users}">Settings</a>
+    </div>
+    <div class="item_menu" id="menu_item3">
+        <a th:href="@{/admin/users}">Mnitor</a>
+    </div>
+    <div class="item_menu" id="menu_item4">
+        <a th:href="@{/admin/users}">Mail sending</a>
+    </div>
+</div>
+</div>
+</body>
+</html>

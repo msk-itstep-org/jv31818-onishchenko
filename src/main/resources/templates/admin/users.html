@@ -2,31 +2,16 @@
 <html lang="ru" xmlns="http://www.thymleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.thymleaf.org ">
 <head>
-    <link rel=”stylesheet” href=”/CSS/main.css” type=”text/css”>
+    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <title>Users</title>
 </head>
 <body>
+<div th:include="/admin/adminMenu :: adminMenu">  </div>
 <h1>User management</h1>
 <br/>
 <br/>
-
-<!--<table>-->
-<!--    <tr>-->
-<!--        <td>Пользователь:</td>-->
-<!--        <td th:text=${user.firstName}></td>-->
-
-<!--        <td>Логин:</td>-->
-<!--        <td th:text=${user.username}></td>-->
-
-<!--        <td>Действия</td>-->
-<!--        <td> <a href="">Заблокировать</a>-->
-<!--            <a href="">Удалить</a>-->
-<!--            <a href="">Просмотреть контроллеры</a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--</table>-->
-
 <table>
     <tr th:each="lsr : ${list}">
         <td>Пользователь:</td>
@@ -36,18 +21,31 @@
         <td th:text=${lsr.username}></td>
 
         <td>Действия</td>
-        <td> <a href="">Заблокировать</a>
+        <td><a href="">Заблокировать</a>
             <a href="">Удалить</a>
             <a href="">Просмотреть контроллеры</a>
         </td>
     </tr>
 </table>
-<form action="" method="POST">
-    <p>Login<input type="text" name="username"/></p>
-    <p>First name<input type="text" name="first_name"/></p>
-    <p>Password<input type="text" name="password"/></p>
-    <p><input type="number" name="username" max="1" min="0"/></p>
-    <p><input type="submit" value="ADD USER"/></p>
+<form th:object="${User}" action="" method="POST">
+    <table>
+        <tr>
+            <td>Добавить пользователя.(простой пасс)</td>
+        </tr>
+        <tr>
+            <td><p>Login<input type="text" name="username"/></p></td>
+            <td><p>First name<input type="text" name="first_name"/></p></td>
+            <td><p>Password<input type="text" name="password"/></p></td>
+            <td><p><input type="number" name="enabled" max="1" min="0"/></p></td>
+        </tr>
+        <tr>
+
+            <td>p><input type="submit" value="ADD USER"/></p></td>
+        </tr>
+    </table>
+
+
+    <
 </form>
 
 </body>

@@ -123,3 +123,24 @@ input:checked + .slider:before {
         text-align:center;
         padding: 10px;
 }
+
+p{
+color: white;
+}
+
+.info{
+width:80%;
+heith:70%;
+border-radius: 17px;
+	text-align: center;
+}
+.info .block{
+border-radius: 17px;
+width:80%;
+heith:70%;
+	border: 1px solid #000;
+	position: absolute;
+	margin: 54px;
+	background: rgba(111, 155, 45, 0.3);
+	background: grey;
+	}

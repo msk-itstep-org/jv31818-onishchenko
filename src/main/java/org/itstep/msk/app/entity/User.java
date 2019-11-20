@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,7 +18,6 @@ public class User implements Serializable {
     private Integer id;
 
     @Column(name = "username")
-    @UniqueElements
     private String username;
 
     @Column(name = "password")
@@ -29,7 +27,7 @@ public class User implements Serializable {
     private String firstName;
 
     @Column(name = "enabled")
-    private Boolean enabledd;
+    private Boolean enabled;
 
     @ManyToMany(targetEntity = Role.class)
     @JoinTable(
@@ -67,14 +65,17 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public Boolean getEnabledd() {
-        return enabledd;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setEnabledd(Boolean enabledd) {
-        this.enabledd = enabledd;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
+//    public boolean isEnabled(){
+//        return enabled;
+//    }
     public Set<Role> getUserRole() {
         return userRole;
     }

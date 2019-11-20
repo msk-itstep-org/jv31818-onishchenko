@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -19,35 +20,40 @@ public class AdminController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/admin")
+    @GetMapping("/")
     public String admin() {
         return "admin/admin";
     }
 
+
+
     @GetMapping("/user/{id}")
-    public ModelAndView users(@PathVariable Integer id) {
-        ModelAndView model = new ModelAndView("admin/user");
-            Map<String, Object> mod = model.getModel();
-            User user = userRepository.findById(id).orElse(new User());
-            mod.put("user", user);
-        return model;
+    public String users(@PathVariable Integer id,Model model) {
+        //ModelAndView modelv = new ModelAndView("/admin/user");
+        User user = userRepository.findById(id).orElse(new User());
+
+        model.addAttribute("user",user);
+        return "/admin/user";
     }
+
+
     @PostMapping("/users")
     public String userAdd(@ModelAttribute User user) {
-        ModelAndView model = new ModelAndView("admin/user");
+        //ModelAndView model = new ModelAndView("admin/user");
         userRepository.save(user);
         userRepository.flush();
-
-        return "redirect:/user/{"+user.getId()+"}";
+        return "redirect:/admin/users";///{"+ user.getId().toString() +"}";
     }
     @GetMapping("/users")
-    public ModelAndView usersAll() {
-        ModelAndView model = new ModelAndView("admin/users");
-        Map<String, Object> mod = model.getModel();
+    public String usersAll(Model model) {
         List<User> list = userRepository.findAll();
-        mod.put("list", list);
-        return model;
+        model.addAttribute("list", list);
+        model.addAttribute("user",new User());
+        return "/admin/users";
     }
+
+
+
 
     @GetMapping("/controllers")
     public String controllers() {

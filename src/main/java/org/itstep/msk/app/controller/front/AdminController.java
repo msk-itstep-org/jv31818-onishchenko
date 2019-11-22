@@ -1,6 +1,8 @@
 package org.itstep.msk.app.controller.front;
 
+import org.itstep.msk.app.entity.Role;
 import org.itstep.msk.app.entity.User;
+import org.itstep.msk.app.repository.RoleRepository;
 import org.itstep.msk.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,6 +21,9 @@ public class AdminController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     @GetMapping("/")
     public String admin() {
@@ -40,6 +45,7 @@ public class AdminController {
     @PostMapping("/users")
     public String userAdd(@ModelAttribute User user) {
         //ModelAndView model = new ModelAndView("admin/user");
+        user.getUserRole().add(new Role("ROLE_USER"));
         userRepository.save(user);
         userRepository.flush();
         return "redirect:/admin/users";///{"+ user.getId().toString() +"}";

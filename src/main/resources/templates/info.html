@@ -7,16 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/CSS/main.css">
 
 </head>
-<body><font color="white">
-    <div th:if="${#httpServletRequest.remoteUser}">
-        <div id="ProfileButton">
-            <a href="/profile">PROFILE</a>
-        </div>
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <a href="/admin/">ADMIN PANE</a>
-        </div>
-    </div>
-
+<body>
     <div th:include="/fragments :: login_data">  </div>
     <div th:include="/fragments :: main_menu">  </div>
     <div id="info" class="info">
@@ -27,6 +18,5 @@
         </div>
 
     </div>
-</font>
 </body>
 </html>

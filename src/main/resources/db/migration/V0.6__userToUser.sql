@@ -1,0 +1,1 @@
+insert into user_roles (id_user,id_role) values ('2','2');

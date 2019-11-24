@@ -1,6 +1,9 @@
 package org.itstep.msk.app.entity;
 
+import org.itstep.msk.app.remote.RemoteController;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "controllers")
@@ -61,4 +64,6 @@ public class ControllerWiy {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

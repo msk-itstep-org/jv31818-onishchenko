@@ -22,11 +22,24 @@
             <a th:href="@{/}">Main</a>
         </div>
         <div  sec:authorize="isAuthenticated()" class="item_menu" id="menu_item1">
-            <a th:href="@{/profile/{id}}">My Profile</a>
+            <a th:href="@{'/profile/'+${userid}}">My Profile</a>
         </div>
 
-        <div  sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item2">
-            <a href="/admin/">Admin panel</a>
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item3">
+            <a th:href="@{/admin/users}">Users</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item4">
+            <a th:href="@{/admin/users}">Controllers</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item5">
+            <a th:href="@{/admin/users}">Settings</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item6">
+            <a th:href="@{/admin/users}">Mnitor</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item7">
+            <a th:href="@{/admin/users}">Mail sending</a>
         </div>
     </div>
 </div>

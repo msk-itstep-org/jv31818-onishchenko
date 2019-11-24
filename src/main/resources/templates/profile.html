@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
@@ -7,6 +7,58 @@
     <link rel="stylesheet" type="text/css" href="/CSS/main.css">
 </head>
 <body>
+<div th:include="/fragments :: login_data">  </div>
+<div th:include="/fragments :: main_menu">  </div>
+
+<div id="info" class="info">
+    <div id="block" class="block">
+        <p><b>Your profile.</b></p>
+        <br>
+
+
+        <div class="user_profile">
+            <table>
+                <tr>
+                    <td>Пользователь:</td>
+                    <td th:text=${user.firstName}></td>
+                </tr><tr>
+                    <td>Логин:</td>
+                    <td th:text=${user.username}></td>
+            </tr><tr>
+                    <td>Информация и сообщения: </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <ul th:each="contr : ${controls}">
+                <li th:text="${contr.name}">
+<!--                    ajax rest request for warns-->
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"
+></script>
+
+<script>
+
+            $.ajax({
+                url: '/admin/user/' + userId,
+                method: 'DELETE',
+                success: function () {
+                    li.remove();
+                },
+                error: function () {}
+            });
+
+    </script>
 
 </body>
 </html>

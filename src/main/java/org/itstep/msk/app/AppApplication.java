@@ -19,15 +19,15 @@ public class AppApplication {
 	public static Properties settings;
 	static {
 		running=true;
-		clients = new ArrayList<Client>();
-		try {
-			settings=new Properties();
-			settings.load(new FileInputStream("/etc/wiy/wiy.conf"));// TODO: move ti def settings file
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		clients = new ArrayList<Client>();
+//		try {
+//			settings=new Properties();
+//			settings.load(new FileInputStream("/etc/wiy/wiy.conf"));// TODO: move ti def settings file
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 	public static void main(String[] args) {

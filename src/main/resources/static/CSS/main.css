@@ -144,3 +144,10 @@ heith:70%;
 	background: rgba(111, 155, 45, 0.3);
 	background: grey;
 	}
+
+.user_profile{
+width: 70%;
+height: 200px;
+background: white;
+margin: 0 auto;
+}

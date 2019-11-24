@@ -1,6 +1,7 @@
 package org.itstep.msk.app.remote;
 
 import org.itstep.msk.app.AppApplication;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -8,9 +9,8 @@ import java.net.ServerSocket;
 public class SocketServerController implements Runnable{
     private ServerSocket ss;
     private int port;
-
     public SocketServerController() throws IOException{
-        port = Integer.parseInt(AppApplication.settings.getProperty("socketport")); // случайный порт (может быть любое число от 1025 до 65535)
+        port = 7777;//Integer.parseInt(AppApplication.settings.getProperty("socketport")); // случайный порт (может быть любое число от 1025 до 65535)
         ss = new ServerSocket(port); // создаем сокет сервера и привязываем его к вышеуказанному порту
     }
 

@@ -30,12 +30,15 @@
                     </td>
                 </tr>
             </table>
-            <ul th:each="contr : ${controls}">
-                <li th:text="${contr.name}">
-<!--                    ajax rest request for warns-->
 
-                </li>
-            </ul>
+<!--                    ajax rest request for warns-->
+            <table>
+                <tr th:each="contr : ${controls}">
+                    <td th:text="${contr.name}"></td>
+                    <td th:if="${contr.available}"><a href="/controller/">Controller</a></td>
+                    <td th:unless="${contr.available}">Controller is unreachable...</td>
+                </tr>
+            </table>
         </div>
 
     </div>

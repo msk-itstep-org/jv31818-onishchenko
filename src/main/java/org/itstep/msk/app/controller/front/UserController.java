@@ -2,6 +2,7 @@ package org.itstep.msk.app.controller.front;
 
 import org.itstep.msk.app.entity.ControllerWiy;
 import org.itstep.msk.app.entity.User;
+import org.itstep.msk.app.remote.RemoteController;
 import org.itstep.msk.app.repository.ControllerWiyRepository;
 import org.itstep.msk.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -56,7 +58,12 @@ public class UserController {
             }
             model.addAttribute("userid", checkUser.getId());
             model.addAttribute("user",checkUser);
-            Set<ControllerWiy> controls = controllerWiyRepository.findByOwner(id);
+            Set<ControllerWiy> controlsEnt = controllerWiyRepository.findByOwner(id);
+            Set<RemoteController> controls = new HashSet<>();
+            for(ControllerWiy cont : controlsEnt){
+                RemoteController rcontroller = new RemoteController(cont);
+                controls.add(rcontroller);
+            }
             model.addAttribute("controls",controls);
 
         }

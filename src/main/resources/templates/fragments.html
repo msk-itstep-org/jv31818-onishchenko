@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>fragments</title>
+</head>
+<body>
+<!--форма логина-->
+<div th:fragment="login_data" class="login_data">
+    <div id="loginform" align="right">
+        <p th:if="${#httpServletRequest.remoteUser}"><b>Hello [[${#httpServletRequest.remoteUser}]]!</b></p>
+        <form th:action="@{/logout}" method="post">
+        <input th:if="${#httpServletRequest.remoteUser}" type="submit" value="Sign Out"/>
+    </form>
+        <p th:unless="${#httpServletRequest.remoteUser}"> <a th:href="@{/login}">Sign in</a><br/><a th:href="@{/register}">Sign up</a> </p>
+    </div>
+</div>
+<!--главное меню на инфо -->
+<div th:fragment="main_menu" class="main_menu">
+    <div  class="top_menu" id="top_menu">
+        <div class="item_menu" id="menu_item0">
+            <a th:href="@{/}">Main</a>
+        </div>
+        <div  sec:authorize="isAuthenticated()" class="item_menu" id="menu_item1">
+            <a th:href="@{'/profile/'+${userid}}">My Profile</a>
+        </div>
+
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item3">
+            <a th:href="@{/admin/users}">Users</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item4">
+            <a th:href="@{/admin/users}">Controllers</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item5">
+            <a th:href="@{/admin/users}">Settings</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item6">
+            <a th:href="@{/admin/users}">Mnitor</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')" class="item_menu" id="menu_item7">
+            <a th:href="@{/admin/users}">Mail sending</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

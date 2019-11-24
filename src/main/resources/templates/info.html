@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Info Page</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
 
 </head>
-<body style="background-color:black; background-image: url('/images/beye.png'); background-repeat: no-repeat;">
-There is some info at page about service e,.t.c
-<a href="/login.html">Sign in</a>
+<body>
+    <div th:include="/fragments :: login_data">  </div>
+    <div th:include="/fragments :: main_menu">  </div>
+    <div id="info" class="info">
+        <div id="block" class="block">
+            <p>Some information...
+                There is some info at page about service e,.t.c
+            </p>
+        </div>
+
+    </div>
 </body>
 </html>

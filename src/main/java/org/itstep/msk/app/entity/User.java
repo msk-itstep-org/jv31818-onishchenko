@@ -1,51 +1,52 @@
 package org.itstep.msk.app.entity;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable {
+
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@OneToMany
     private Integer id;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
     @Column(name = "enabled")
-    private Boolean enabledd;
+    private Boolean enabled;
 
-    public Boolean getEnabledd() {
-        return enabledd;
-    }
-
-    public void setEnabledd(Boolean enabledd) {
-        this.enabledd = enabledd;
-    }
-
+    @ManyToMany(targetEntity = Role.class)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = {@JoinColumn(name="id_user",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "id_role",referencedColumnName = "id")}
+    )
+    private Set<Role> userRole;
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getUsername() {
+        return username;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -56,11 +57,30 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+//    public boolean isEnabled(){
+//        return enabled;
+//    }
+    public Set<Role> getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Set<Role> userRole) {
+        this.userRole = userRole;
     }
 }

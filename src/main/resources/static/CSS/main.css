@@ -4,6 +4,9 @@ body {
     background-image: url('/images/beye.png');
     background-repeat: no-repeat;
 }
+font{
+color: white;
+}
 table {
     border-collapse: collapse;
     width: 800px;
@@ -97,4 +100,54 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/*new styles*/
+
+/*menu top*/
+.top_menu {
+    margin: 0 auto;
+    width: 95%;
+    height: 40px;
+    text-align:center;
+}
+
+.item_menu {
+    float:left;
+    width:110px;
+        height:30px;
+        background: url('/images/buttonAdmin.png');
+        background-size: 100% 100%;
+        float:left;
+        margin: 0 15px 15px 0;
+        text-align:center;
+        padding: 10px;
+}
+
+p{
+color: white;
+}
+
+.info{
+width:80%;
+heith:70%;
+border-radius: 17px;
+	text-align: center;
+}
+.info .block{
+border-radius: 17px;
+width:80%;
+heith:70%;
+	border: 1px solid #000;
+	position: absolute;
+	margin: 54px;
+	background: rgba(111, 155, 45, 0.3);
+	background: grey;
+	}
+
+.user_profile{
+width: 70%;
+height: 200px;
+background: white;
+margin: 0 auto;
 }
